@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -17,14 +18,14 @@ public class Player : MonoBehaviour
     public bool jumpRequested;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Start()
     {
         rb = GetComponent<Rigidbody>();
         transform.position = startPose;
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (Keyboard.current.spaceKey.wasPressedThisFrame && IsGrounded())
         {
@@ -33,7 +34,7 @@ public class Player : MonoBehaviour
 
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         Vector3 move = new Vector3(moveInput.x, 0, moveInput.y) * speed;
         rb.linearVelocity = new Vector3(move.x, rb.linearVelocity.y, move.z);
@@ -45,16 +46,21 @@ public class Player : MonoBehaviour
         }
     }
     
-    bool IsGrounded()
+    private bool IsGrounded()
     {
         return Physics.CheckSphere(groundCheck.position, groundCheckRadius, groundLayer);
     }
 
-    void OnMove(InputValue value)
+    private void OnMove(InputValue value)
     {
         moveInput = value.Get<Vector2>();
     }
-    
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Destroy(other.gameObject);;
+    }
+
     private void OnDrawGizmosSelected()
     {
         if (groundCheck == null) return;
