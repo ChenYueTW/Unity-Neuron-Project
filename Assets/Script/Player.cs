@@ -58,7 +58,12 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Destroy(other.gameObject);;
+        if (other.CompareTag("Point"))
+        {
+            Debug.Log("Point++ !");
+            other.gameObject.SetActive(false);
+            ScoreManager.Instance.AddScore();
+        }
     }
 
     private void OnDrawGizmosSelected()
@@ -66,5 +71,14 @@ public class Player : MonoBehaviour
         if (groundCheck == null) return;
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            Debug.Log("Game over!");
+            Time.timeScale = 0;
+        }
     }
 }
