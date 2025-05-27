@@ -140,11 +140,6 @@ MonoBehaviour:
   NumStepsToRecord: 0
   DemonstrationName: HumanDemo
   DemonstrationDirectory: 
---- !u!4 &234152855 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 439826675700149516, guid: ad5f99c18f539774eb6f6456e7ec029b, type: 3}
-  m_PrefabInstance: {fileID: 8391435210472651214}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &351062865 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7525174823789785511, guid: ad5f99c18f539774eb6f6456e7ec029b, type: 3}
@@ -326,68 +321,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &845180457
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 845180458}
-  - component: {fileID: 845180459}
-  m_Layer: 0
-  m_Name: SensorRoot
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &845180458
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 845180457}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 234152855}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &845180459
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 845180457}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bb6b867a41448888c1cd4f99643ad71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SensorName: RayPerceptionSensor
-  m_DetectableTags:
-  - Wall
-  - Point
-  m_RaysPerDirection: 6
-  m_MaxRayDegrees: 180
-  m_SphereCastRadius: 0.5
-  m_RayLength: 3
-  m_RayLayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967291
-  m_ObservationStacks: 1
-  m_AlternatingRayOrder: 1
-  m_UseBatchedRaycasts: 0
-  rayHitColor: {r: 1, g: 0, b: 0, a: 1}
-  rayMissColor: {r: 1, g: 1, b: 1, a: 1}
-  m_StartVerticalOffset: 0
-  m_EndVerticalOffset: 0
 --- !u!1 &1229299385
 GameObject:
   m_ObjectHideFlags: 0
@@ -467,6 +400,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1447351397 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5245463329354444191, guid: ad5f99c18f539774eb6f6456e7ec029b, type: 3}
+  m_PrefabInstance: {fileID: 8391435210472651214}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8391435210472651214
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -550,7 +488,7 @@ PrefabInstance:
     - target: {fileID: 2560567589302797764, guid: ad5f99c18f539774eb6f6456e7ec029b, type: 3}
       propertyPath: sensorRoot
       value: 
-      objectReference: {fileID: 845180458}
+      objectReference: {fileID: 1447351397}
     - target: {fileID: 2887551865653893348, guid: ad5f99c18f539774eb6f6456e7ec029b, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -570,13 +508,17 @@ PrefabInstance:
     - target: {fileID: 6920234758172749453, guid: ad5f99c18f539774eb6f6456e7ec029b, type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 5022602860645237092, guid: 3d89bac6f60274648950db71fd6fa938, type: 3}
+      objectReference: {fileID: 5022602860645237092, guid: d26acd2a29e2bd24b95ccf8a1162c1db, type: 3}
     - target: {fileID: 6920234758172749453, guid: ad5f99c18f539774eb6f6456e7ec029b, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6920234758172749453, guid: ad5f99c18f539774eb6f6456e7ec029b, type: 3}
       propertyPath: m_BehaviorType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6920234758172749453, guid: ad5f99c18f539774eb6f6456e7ec029b, type: 3}
+      propertyPath: m_UseChildSensors
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6920234758172749453, guid: ad5f99c18f539774eb6f6456e7ec029b, type: 3}
@@ -598,10 +540,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 2188424885525557864, guid: ad5f99c18f539774eb6f6456e7ec029b, type: 3}
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 439826675700149516, guid: ad5f99c18f539774eb6f6456e7ec029b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 845180458}
+    m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3789392276498916210, guid: ad5f99c18f539774eb6f6456e7ec029b, type: 3}
       insertIndex: -1

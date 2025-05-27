@@ -24,13 +24,14 @@ public class PlayerAgent : Agent
     {
         rb = GetComponent<Rigidbody>();
         allPoints = GameObject.FindGameObjectsWithTag("Point");
+        sensorRoot = transform.Find("SensorRoot");
     }
 
     private void Update()
     {
         timeSinceStart += Time.deltaTime;
 
-        if (timeSinceStart > 15f)
+        if (timeSinceStart > 30f)
         {
             Debug.Log("超時，重新開始");
             AddReward(-0.5f);
@@ -65,6 +66,34 @@ public class PlayerAgent : Agent
         // 觀察 Agent 的速度與是否在地面上
         sensor.AddObservation(rb.linearVelocity);
         sensor.AddObservation(IsGrounded() ? 1f : 0f);
+        
+        // 找最近的得分物件
+        GameObject nearest = FindNearestPoint();
+        if (nearest != null)
+        {
+            Vector3 dir = (nearest.transform.position - transform.position).normalized;
+            sensor.AddObservation(dir); // 加入方向
+            
+            float dist = Vector3.Distance(transform.position, nearest.transform.position);
+            AddReward(-0.001f * dist); // 越靠近得分物件，懲罰越少
+        }
+    }
+    
+    GameObject FindNearestPoint()
+    {
+        float minDist = float.MaxValue;
+        GameObject nearest = null;
+        foreach (GameObject point in allPoints)
+        {
+            if (!point.activeSelf) continue;
+            float dist = Vector3.Distance(point.transform.position, transform.position);
+            if (dist < minDist)
+            {
+                minDist = dist;
+                nearest = point;
+            }
+        }
+        return nearest;
     }
 
     public override void OnActionReceived(ActionBuffers actions)
